@@ -8,10 +8,10 @@ import { map, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class DataStorageService {
-  constructor(private http: HttpClient, private rs: RecipeService) {}
+  constructor(private http: HttpClient, private recipeService: RecipeService) {}
 
   storeRecipes() {
-    const recipes = this.rs.getRecipes();
+    const recipes = this.recipeService.getRecipes();
     this.http
       .put(
         'https://ng-course-recipe-book-1910e-default-rtdb.europe-west1.firebasedatabase.app/recipes.json',
@@ -36,7 +36,9 @@ export class DataStorageService {
             };
           });
         }),
-        tap((recipes) => this.rs.setRecipes(recipes))
+        tap((recipes) => {
+          this.recipeService.setRecipes(recipes);
+        })
       );
   }
 }

@@ -25,7 +25,11 @@
             >Add Ingredients to Shopping List</a
           >
         </li>
-        <li><a style="cursor: pointer" routerLink="edit">Edit Recipe</a></li>
+        <li>
+          <a style="cursor: pointer" routerLink="edit" (click)="onEditRecipe()"
+            >Edit Recipe</a
+          >
+        </li>
         <li>
           <a style="cursor: pointer" (click)="onDeleteRecipe()"
             >Delete Recipe</a
