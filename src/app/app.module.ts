@@ -12,25 +12,20 @@ import { RecipesModule } from './recipes/recipes.module';
 import { RouterModule } from '@angular/router';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, AuthComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     RecipesModule,
     ShoppingListModule,
     SharedModule,
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true,
-    },
+    CoreModule,
+    AuthModule,
   ],
   bootstrap: [AppComponent],
   exports: [RouterModule],
